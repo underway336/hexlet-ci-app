@@ -17,7 +17,7 @@ jobs:
           node-version: '18.x'
           cache: 'npm'
 
-      - name: Install npm
+      - name: Install Dependencies
         run:  npm install -g npm@^6
 
       - name: Run Snyk to check for vulnerabilities
@@ -26,6 +26,7 @@ jobs:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
             args: test
+        continue-on-error: false
 
       - name: Install Make
         run: |
