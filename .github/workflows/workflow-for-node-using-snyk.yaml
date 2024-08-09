@@ -1,16 +1,15 @@
 name: Workflow for Node using Snyk
 
 on:
-    push:
-      branches:
-        - main
-    pull_request:
-      branches:
-        - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     
     steps:
@@ -24,30 +23,26 @@ jobs:
           cache: 'npm'
 
       - name: Install npm
-        run:  npm install -g npm@6
-
-    #   - name: Install Dependencies
-    #     run:  npm install
+        run: npm install -g npm@6
+      
+      - name: Install Snyk CLI
+        run: npm install -g snyk
 
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
+        run: snyk monitor
         env:
-            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-            args: test
-            continue-on-error: false
-            command: monitor
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
       - name: Install Make
         run: |
-              sudo apt-get update
-              sudo apt-get install -y make
+          sudo apt-get update
+          sudo apt-get install -y make
     
       - name: Set up Project
-        run:  make setup
+        run: make setup
           
       - name: Run Tests
-        run:  make test
+        run: make test
     
       - name: Run Linting
-        run:  make lint
+        run: make lint
