@@ -17,8 +17,8 @@ jobs:
           node-version: '18.x'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install npm
+        run:  npm install -g npm@^6
 
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
@@ -27,6 +27,16 @@ jobs:
         with:
             args: test
 
-      - run: make setup
-      - run: make test
-      - run: make lint
+      - name: Install Make
+        run: |
+              sudo apt-get update
+              sudo apt-get install -y make
+    
+      - name: Set up Project
+        run:  make setup
+          
+      - name: Run Tests
+        run:  make test
+    
+      - name: Run Linting
+        run:  make lint
