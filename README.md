@@ -1,4 +1,4 @@
-[![run-setup-test-eslint](https://github.com/underway336/hexlet-ci-app/actions/workflows/run-setup-test-eslint.yaml/badge.svg)](https://github.com/underway336/hexlet-ci-app/actions/workflows/run-setup-test-eslint.yaml)
+[![Workflow for Node using Snyk](https://github.com/underway336/hexlet-ci-app/actions/workflows/workflow-for-node-using-snyk.yaml/badge.svg)](https://github.com/underway336/hexlet-ci-app/actions/workflows/workflow-for-node-using-snyk.yaml)
 # Example app for CI Hexlet course
 
 Starting boilerplate of [Strapi](https://strapi.io/) application
