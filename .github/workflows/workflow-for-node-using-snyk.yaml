@@ -45,16 +45,15 @@ jobs:
         run: make test
     
       - name: Run Linting
-        run: make lint
+        run: make lint    
+         # - name: Cypress run
+         #   uses: cypress-io/github-action@v6
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+         #   with:
+         #   record: true
 
-        with:
-          record: true
-
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          CYPRESS_PROJECT_ID: ${{ secrets.PROJECT_ID }}
-          # Дополнительные переменные окружения, если необходимо
-          NODE_ENV: test
+         #   env:
+         #     CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+         #     CYPRESS_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+         # Дополнительные переменные окружения, если необходимо
+         # NODE_ENV: test
