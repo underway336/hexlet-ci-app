@@ -1,6 +1,12 @@
 name: Workflow for Node using Snyk
 
-on: push
+on:
+    push:
+      branches:
+        - main
+    pull_request:
+      branches:
+        - main
 
 jobs:
   build:
@@ -16,9 +22,12 @@ jobs:
         with:
           node-version: '18.x'
           cache: 'npm'
+          
+      - name: Install npm
+        run:  npm install -g npm@6
 
       - name: Install Dependencies
-        run:  npm install -g npm@^6
+        run:  npm install
 
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
@@ -26,7 +35,8 @@ jobs:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
             args: test
-        continue-on-error: false
+            continue-on-error: false
+            command: monitor
 
       - name: Install Make
         run: |
