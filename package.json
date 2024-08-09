@@ -26,6 +26,10 @@
     "@strapi/plugin-users-permissions": "4.2.3",
     "@strapi/strapi": "4.2.3"
   },
+  "cypress": {
+    "baseUrl": "http://localhost:3000",
+    "video": false
+  },
   "author": {
     "name": "A Strapi developer"
   },
