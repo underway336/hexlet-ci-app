@@ -22,9 +22,9 @@ jobs:
         with:
           node-version: '18.x'
           cache: 'npm'
-          
-      - name: Install npm
-        run:  npm install -g npm@6
+
+    #   - name: Install npm
+    #     run:  npm install -g npm@6
 
       - name: Install Dependencies
         run:  npm install
@@ -36,7 +36,7 @@ jobs:
         with:
             args: test
             continue-on-error: false
-            command: monitor
+    #       command: monitor
 
       - name: Install Make
         run: |
