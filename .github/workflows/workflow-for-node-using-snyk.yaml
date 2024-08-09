@@ -35,8 +35,8 @@ jobs:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
             args: test
-    #       continue-on-error: false
-    #       command: monitor
+            continue-on-error: false
+            command: monitor
 
       - name: Install Make
         run: |
