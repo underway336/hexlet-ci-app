@@ -29,7 +29,7 @@ jobs:
         run: npm install -g snyk
 
       - name: Run Snyk to check for vulnerabilities
-        run: snyk test
+        run: snyk monitor
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
@@ -46,3 +46,15 @@ jobs:
     
       - name: Run Linting
         run: make lint
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+
+        with:
+          build: npm run build
+
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          # Дополнительные переменные окружения, если необходимо
+          NODE_ENV: test
